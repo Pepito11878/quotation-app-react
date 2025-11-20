@@ -4,19 +4,20 @@ interface FormProps {
   onAddQuote: (text: string, author: string) => void;
 }
 
-export const Form: React.FC<FormProps> = ({ onAddQuote }) => {
+// Composant Form en fonction classique
+export function Form(props: FormProps) {
   const [quoteText, setQuoteText] = useState("");
   const [authorText, setAuthorText] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
     if (quoteText.trim() && authorText.trim()) {
-      onAddQuote(quoteText.trim(), authorText.trim());
+      props.onAddQuote(quoteText.trim(), authorText.trim());
       setQuoteText("");
       setAuthorText("");
     }
-  };
+  }
 
   return (
     <form
@@ -27,7 +28,7 @@ export const Form: React.FC<FormProps> = ({ onAddQuote }) => {
       <input
         type="text"
         value={quoteText}
-        onChange={(e) => setQuoteText(e.target.value)}
+        onChange={function(e) { setQuoteText(e.target.value); }}
         className="p-4 rounded-lg bg-[#2a2a3d] border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#ff6f61] transition"
         placeholder="Ex: La vie est belle"
       />
@@ -38,7 +39,7 @@ export const Form: React.FC<FormProps> = ({ onAddQuote }) => {
       <input
         type="text"
         value={authorText}
-        onChange={(e) => setAuthorText(e.target.value)}
+        onChange={function(e) { setAuthorText(e.target.value); }}
         className="p-4 rounded-lg bg-[#2a2a3d] border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#ff6f61] transition"
         placeholder="Ex: Victor Hugo"
       />
@@ -51,4 +52,4 @@ export const Form: React.FC<FormProps> = ({ onAddQuote }) => {
       </button>
     </form>
   );
-};
+}
