@@ -46,7 +46,7 @@ export function Form(props: FormProps) {
 
       <button
         type="submit"
-        className="mt-4 bg-[#ff6f61] hover:bg-[#ff4f3d] text-white font-semibold text-lg py-3 rounded-full transition"
+        className="mt-4 bg-[#ff6f61] hover:bg-[#ff4f3d] text-white font-semibold text-lg py-3 rounded-full transition hover:cursor-pointer"
       >
         Ajouter
       </button>
